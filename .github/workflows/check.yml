@@ -50,6 +50,7 @@ jobs:
           cache: pip
 
       - name: Install dependencies
+        uses: batched/install-dependencies@v1 # 如果依赖安装报错，可换回原本的 pip install
         run: pip install -r requirements.txt
 
       - name: Validate worker secret
@@ -119,11 +120,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -131,4 +127,4 @@ jobs:
       - name: Show site URL
         run: |
           echo "订阅地址：https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/nodes.txt"
-          echo "仪表盘：  https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          echo "仪表盘：   https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
