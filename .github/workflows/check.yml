@@ -71,6 +71,11 @@ jobs:
           MIN_SUCCESS_RATIO: '0'
         run: python vpngate.py
 
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
       - name: Ensure GitHub Pages is enabled
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
